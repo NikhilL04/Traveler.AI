@@ -1,0 +1,53 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+
+<div class="container mx-auto">
+  <div class="max-w-md mx-auto mt-10">
+    <form method="post" enctype="multipart/form-data" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    {% csrf_token %}
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.place.id_for_label }}">
+        Destination
+      </label>
+      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{ form.place.id_for_label }}" name="{{ form.place.name }}">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.near_city.id_for_label }}">
+        Near City
+      </label>
+      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{ form.near_city.id_for_label }}" name="{{ form.near_city.name }}">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.image.id_for_label }}">
+        Image
+      </label>
+      {{ form.image }}
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.info.id_for_label }}">
+        Info
+      </label>
+      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="{{ form.info.id_for_label }}" name="{{ form.info.name }}">
+    </div>
+
+
+    <div class="flex items-center justify-between">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        Submit
+
+      </button>
+</div>
+  </form>
+
+  </div>
+</div>
+  </div>
+</div>

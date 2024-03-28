@@ -1,0 +1,72 @@
+{%load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS (for icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Your custom styles can be placed here */
+        /* Override Bootstrap or add additional custom styles */
+    </style>
+</head>
+<body>
+    <!-- Your HTML content goes here -->
+
+    <!-- Bootstrap JS, Popper.js, and jQuery (required for Bootstrap functionality) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Your custom scripts can be placed here -->
+</body>
+
+<section class="vh-100" style="background-color: #4B515D;">
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+
+        <div class="card" style="color: #4B515D; border-radius: 35px;">
+          <div class="card-body p-4">
+
+            <div class="d-flex">
+              <h6 class="flex-grow-1">{{current_weather.city}}</h6>
+              <h6>{{current_weather.time}}</h6>
+            </div>
+
+            <div class="d-flex flex-column text-center mt-5 mb-4">
+              <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;">{{current_weather.temp}}</h6>
+              <span class="small" style="color: #868B94">Stormy</span>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1" style="font-size: 1rem;">
+                <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1">{{current_weather.wind_speed}}km/h
+                  </span></div>
+                <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1">{{current_weather.precipitation}}</span>
+                </div>
+                <div><i class="fas fa-sun fa-fw" style="color: #868B94;"></i> <span class="ms-1">{{current_weather.cloudiness}}</span>
+                </div>
+              </div>
+              <div>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
+                  width="100px">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <center>
+      <a class="inline-block bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded" href="{%url 'get_weather' city=current_weather.city%}">
+        Get More Weather Updates..
+      </a>
+
+
+  </div>
+
+</section>

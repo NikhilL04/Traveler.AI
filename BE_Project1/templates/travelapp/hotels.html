@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Additional custom styles can be added here */
+
+        body {
+            padding-top: 50px; /* Add some padding to the top of the page */
+        }
+
+    </style>
+</head>
+<body>
+
+  <div class="container">
+  {% if city_name %}
+      <h1 class="mt-4 mb-4">Hotels in {{ city_name }}</h1>
+  {% else %}
+      <h1 class="mt-4 mb-4">Find Hotels here..</h1>
+  {% endif %}
+
+  <form class="mb-4" action="{% url 'hotel_list' %}" method="GET">
+      <div class="form-group">
+          <label for="city_name">Enter City Name:</label>
+          <input type="text" class="form-control" id="city_name" name="city_name" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+  {% for hotel in page_obj %}
+      <div class="card mb-4">
+          <div class="card-body">
+              <h3 class="card-title">{{ hotel.name }}</h3>
+              <p class="card-text">{{ hotel.address }}</p>
+              <p class="card-text">City: {{ city_name }}</p>
+              <a href="https://www.google.com/maps/search/?api=1&query={{ hotel.latitude }},{{ hotel.longitude }}" class="btn btn-primary">View on Google Maps</a>
+          </div>
+      </div>
+  {% endfor %}
+
+  {% if page_obj.has_next %}
+      <a href="?city_name={{ city_name }}&page={{ page_obj.next_page_number }}" class="btn btn-primary">More hotels</a>
+
+  {% endif %}
+</div>
+
+      <div class="container">
+<a href="{%url 'home'%}" class="btn btn-primary">Go Back to home</a>
+</div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+
+
+    .container {
+            background-color: skyblue; /* Set the background color of the container */
+        padding: 20px; /* Add some padding inside the container */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for a raised effect */
+    }
+
+</style>
+<footer class="footer">
+    
+        <p class="text-center">&copy; 2024 Character. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

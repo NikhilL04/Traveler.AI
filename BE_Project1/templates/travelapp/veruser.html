@@ -1,0 +1,87 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>user's detail</title>
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  body {
+    background-color: #f3f4f6; /* Light grey background color */
+  }
+
+  .beautiful-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: skyblue; /* Sky blue background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    margin: 20px auto;
+    max-width: 800px;
+    font-size: 24px;
+    line-height: 2.0;
+    color: #fff; /* White text color */
+    text-align: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    .beautiful-text-container {
+      font-size: 20px;
+    }
+  }
+
+  /* Additional styling for the form */
+  .form-container {
+    background-color: #ffffff; /* White background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    margin: 20px auto;
+    max-width: 400px;
+  }
+</style>
+</head>
+<body>
+
+<div class="beautiful-text-container">
+  <div>
+    <h2>"You can assist us in discovering undiscovered, picturesque locations and facilitate sharing these hidden gems with others."</h2>
+  </div>
+</div>
+
+<h3 style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+  We only require your username and email address for verification purposes of the data that you are going to share with us.
+</h3>
+
+<div class="container mx-auto">
+  <div class="max-w-md mx-auto mt-10">
+    <form method="post" enctype="multipart/form-data" class="form-container">
+      {% csrf_token %}
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.username.id_for_label }}">
+          Username
+        </label>
+        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" name="username">
+      </div>
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.email.id_for_label }}">
+          Email
+        </label>
+        <input type="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email">
+      </div>
+      <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

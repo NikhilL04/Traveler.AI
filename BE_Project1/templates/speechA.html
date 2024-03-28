@@ -1,0 +1,12 @@
+{%load static%}
+<form action="{% url 'travelAi' %}" method="POST">
+    {% csrf_token %}
+    <input class="form-control mb-2" required type="text" autofocus="autofocus" name="prompt" value="{{ prompt }}" id="">
+    <label for="speech_input">Speech Input</label>
+    <input type="checkbox" id="speech_input" name="speech_input">
+    <br>
+    <label for="speech_output">Speech Output</label>
+    <input type="checkbox" id="speech_output" name="speech_output">
+    <br>
+    <button class="btn btn-success btn-block mt-3" type="submit">GENERATE...</button>
+</form>

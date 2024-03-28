@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User login</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f3f4f6; /* Light grey background color */
+    }
+
+    .beautiful-text-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: skyblue; /* Sky blue background color */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+      margin: 20px auto;
+      max-width: 800px;
+      font-size: 24px;
+      line-height: 2.0;
+      color: #fff; /* White text color */
+      text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      .beautiful-text-container {
+        font-size: 20px;
+      }
+    }
+
+    /* Additional styling for the form */
+    .form-container {
+      background-color: #ffffff; /* White background color */
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+      margin: 20px auto;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid bg-primary text-light">
+    <div class="container py-4">
+      <h2 class="text-center">Login/Signup To get Connected with traveler</h2>
+    </div>
+</div>
+
+<div class="container mx-auto">
+  <div class="max-w-md mx-auto mt-10" id="signupForm">
+
+
+    <form method="post" class="form-container" action="{% url 'signup' %}">
+      {% csrf_token %}
+      <fieldset>
+        <h5>Please, enter your email, username, and password for sign up.</h5>
+        <div class="input-block">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-username">Username</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" name="username" required>
+        </div>
+        <div class="input-block">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-email">E-mail</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" required>
+        </div>
+        <div class="input-block">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="signup-password">Password</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name="password" required>
+        </div>
+      </fieldset>
+      <br>
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Sign Up</button>
+        <button id="loginBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</button>
+      </div>
+    </form>
+      <center><h1>If you have already Signed just click on login here</h1></center>
+  </div>
+</div>
+
+
+<div class="container mx-auto">
+
+  <div class="max-w-md mx-auto mt-10" id="loginForm" style="display: none;">
+
+    <form method="post" class="form-container" action="{% url 'login' %}">
+      {% csrf_token %}
+      <fieldset>
+        <h5>Please, enter your email and password for login.</h5>
+        <div class="input-block">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="login-email">E-mail</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email"required>
+        </div>
+        <div class="input-block">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="login-password">Password</label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name="password" required>
+        </div>
+      </fieldset>
+      <br>
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Login</button>
+      {% if error_message %}
+        <p>{{ error_message }}</p>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const signupForm = document.getElementById('signupForm');
+    const loginForm = document.getElementById('loginForm');
+    const loginBtn = document.getElementById('loginBtn');
+
+    loginBtn.addEventListener('click', function() {
+      signupForm.style.display = 'none';
+      loginForm.style.display = 'block';
+    });
+  });
+</script>
+<br><br
+<br>
+</body>
+<footer class="footer">
+
+        <p class="text-center">&copy; 2024 Character. All Rights Reserved.</p>
+    </div>
+</footer>
+</html>
