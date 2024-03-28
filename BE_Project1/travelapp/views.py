@@ -49,7 +49,7 @@ import urllib.request
 
 @api_view(['GET'])
 def get_weather(request, city):
-    api_key = '013b78f6c308f7780d3b3ac4f92d9107'
+    api_key = '#'
 
     if not city:
         return render(request, 'travelapp/error.html', {'error': 'City not provided'})
@@ -104,7 +104,7 @@ from datetime import datetime
 
 @api_view(['GET'])
 def getcurrent_weather(request, city):
-    api_key = "013b78f6c308f7780d3b3ac4f92d9107"  # Remember to replace this with your actual API key
+    api_key = "#"  # Remember to replace this with your actual API key
 
     if not city:
         return render(request, 'travelapp/error.html', {'error': 'City not provided'})
@@ -272,8 +272,8 @@ from django.http import HttpResponse
 from amadeus import Client, ResponseError
 
 amadeus = Client(
-    client_id='Vp1rV9h0aCCd54Bb1s5hZgZmVAW2DO80',
-    client_secret='UH4gUsAuLL7fzJRd'
+    client_id='#',
+    client_secret='#'
 )
 
 # hotels/views.py
